@@ -6,11 +6,20 @@ import "./Style/App.css";
 function App(): JSX.Element {
   const [todo, setToDo] = useState<string>("");
   const [arrayToDos, setTArrayToDos] = useState<ToDo[]>([]);
-  console.log(todo);
+  function handleAdd(e: React.FormEvent) {
+    e.preventDefault();
+    if (todo) {
+      setTArrayToDos([
+        ...arrayToDos,
+        { id: Date.now(), ToDo: todo, isDone: false },
+      ]);
+      setToDo("");
+    }
+  }
   return (
     <div className="App">
       <span className="heading">Taskify</span>
-      <InputField todo={todo} setToDo={setToDo} />
+      <InputField todo={todo} setToDo={setToDo} handleAdd={handleAdd} />
     </div>
   );
 }
