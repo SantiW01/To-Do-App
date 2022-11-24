@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import InputField from "./Components/InputField";
+import ToDoList from "./Components/ToDoList";
 import ToDo from "./Model";
 import "./Style/App.css";
 
@@ -20,6 +21,7 @@ function App(): JSX.Element {
     <div className="App">
       <span className="heading">Taskify</span>
       <InputField todo={todo} setToDo={setToDo} handleAdd={handleAdd} />
+      <ToDoList toDo={arrayToDos} setToDo={setTArrayToDos} />
     </div>
   );
 }
