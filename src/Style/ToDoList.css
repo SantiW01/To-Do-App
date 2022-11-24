@@ -4,3 +4,9 @@
   width: 90%;
   flex-wrap: wrap;
 }
+
+@media (max-width: 700px) {
+  .toDos {
+    width: 95%;
+  }
+}

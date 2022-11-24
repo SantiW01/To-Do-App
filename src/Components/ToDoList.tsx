@@ -1,6 +1,7 @@
 import React from "react";
 import ToDo from "../Model";
 import "../Style/ToDoList.css";
+import SingleToDo from "./SingleToDo";
 
 interface Props {
   toDo: ToDo[];
@@ -10,8 +11,8 @@ interface Props {
 export default function ToDoList({ toDo, setToDo }: Props): JSX.Element {
   return (
     <div className="todos">
-      {toDo.map((todo, id) => (
-        <li key={id}>{todo.ToDo}</li>
+      {toDo.map((todo) => (
+        <SingleToDo toDo={todo} key={todo.id} toDos={toDo} setToDos={setToDo} />
       ))}
     </div>
   );
