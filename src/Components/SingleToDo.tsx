@@ -14,10 +14,22 @@ export default function SingleToDo({
   toDo,
   toDos,
   setToDos,
-}: Props): JSX.Element {
+}: Props): JSX.Element | any {
+  const handleDone = (id: number) => {
+    setToDos(
+      toDos.map((todo) =>
+        toDo.id === id ? { ...toDo, isDone: !toDo.isDone } : todo
+      )
+    );
+  };
+
   return (
     <form action="" className="toDos__single">
-      <span className="toDos__single--text">{toDo.ToDo}</span>
+      {toDo.isDone ? (
+        <s className="toDos__single--text">{toDo.ToDo}</s>
+      ) : (
+        <span className="toDos__single--text">{toDo.ToDo}</span>
+      )}
       <span>
         <div className="icon">
           <AiFillEdit />
@@ -25,7 +37,7 @@ export default function SingleToDo({
         <div className="icon">
           <AiFillDelete />
         </div>
-        <div className="icon">
+        <div className="icon" onClick={() => handleDone(toDo.id)}>
           <MdDone />
         </div>
       </span>
