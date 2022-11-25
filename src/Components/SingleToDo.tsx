@@ -23,6 +23,10 @@ export default function SingleToDo({
     );
   };
 
+  const handleDelete = (id: number) => {
+    setToDos(toDos.filter((todo) => toDo.id !== id));
+  };
+
   return (
     <form action="" className="toDos__single">
       {toDo.isDone ? (
@@ -34,7 +38,7 @@ export default function SingleToDo({
         <div className="icon">
           <AiFillEdit />
         </div>
-        <div className="icon">
+        <div className="icon" onClick={() => handleDelete(toDo.id)}>
           <AiFillDelete />
         </div>
         <div className="icon" onClick={() => handleDone(toDo.id)}>
